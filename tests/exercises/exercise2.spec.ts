@@ -1,16 +1,15 @@
 import { test, expect } from "@playwright/test";
 
-
-test.beforeEach("Login to NN zakelijk", async ({ page }) => {
+test.beforeEach("Login to SecureBank", async ({ page }) => {
   // Move the login steps into the beforeEach code
 });
 
-test("Verify header details", async ({ page }) => {
-  // Assert the header details here
-
+test("Transfer money from Checking to High-Yield account", async ({ page }) => {
+  // Move the steps to transfer money to this test
+  // Hint: Copy-Paste the steps from exercise one
 });
 
-test('Verify number of products',async({page})=> {
-  // Created another test in this block with a different assert
-})
-
+test("View all account activitity", async ({ page }) => {
+  // Created a new test in this block that verifies activities on all accounts
+  // You can choose the tests to your liking
+});

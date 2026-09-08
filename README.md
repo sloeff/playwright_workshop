@@ -11,3 +11,11 @@ Welcome to the Playwright API Testing repository! This project is designed to pr
 # Build and Test
 
 - [Running and debugging tests](https://playwright.dev/docs/running-tests)
+
+# Exercises
+
+1. Learn how to use the codegen tool
+2. Use beforeEach to remove duplicate code
+3. Optimize even further with functions and Page Object Model
+4. Stub calls to make the test run isolated
+5. Use Playwright to test an API

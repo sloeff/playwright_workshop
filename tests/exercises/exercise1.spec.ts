@@ -1,22 +1,17 @@
 import { test } from "@playwright/test";
 
 /* Open Playwright codegen the terminal
-npx playwright codegen https://practicesoftwaretesting.com
+npx playwright codegen https://qaplayground.com/bank/login
 Follow the steps below:
-    1. Search for "hammer" 
-    2. Open "Thor Hammer" detail page
-    3. Add "Thor Hammer" to the cart
-    4. Navigate to the cart and verify that "Thor Hammer" is in the cart
-    5. Proceed to checkout
-    6. Use a guest a account, use your own e-mail and name to continue as a guest
-    7. Provide a valid Dutch postal code to continue
-    8. Provide dummy bank details and confirm the payment
-    9. Verify that the payment is confirmed, then confirm to continue
-    10. Verify that an invoice number is created
-
-  What happens if you remove the verifcation on step 9?
+    1. Login using the standard_user account (credentials are listed on the login page)
+    2. Open the "Transfer Money" page
+    3. Transfer 1 dollar from "Everyday Checking" to "High-Yield Saving"
+    4. Add a memo of your chosing
+    5. Set "Transfer Date" to "Today" and review the Transfer
+    6. Verify the amount and memo are visible on the review pop-up and confirm
+    7. Verify the succesfull status and a reference number is returned
 */
 
-test("Order Thor Hammer from practicesoftwaretesting.com", async ({ page }) => {
+test("Transfer money from Checking account to High-Yield account", async ({ page }) => {
   // Paste the steps here
 });

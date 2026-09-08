@@ -1,45 +1,33 @@
 import { test, expect } from "@playwright/test";
-import { LoginPageExample } from "../../../po/examples/LoginPageExample";
-import { ZakelijkHomePageExample } from "../../../po/examples/Zakelijk-HomePageExample";
-import { AddEmployeeDialogExample } from "../../../po/examples/AddEmployeeDialogExample";
+import { LoginPageExample } from "../../../pages/examples/LoginPageExample";
+import { DashboardPageExample } from "../../../pages/examples/DashboardPageExample";
+import { TransferMoneyPage } from "../../../pages/examples/TransferMoneyPage";
 
-// Create a function within LoginPage Class that handles the login steps
+// Create a function within LoginPage.ts that handles the login steps
 // Use the function within the beforeEach
-// Move locators to the new Page Object Model Classes
-test.beforeEach("Login to NN zakelijk", async ({ page }) => {
+// Use Page Object model for Locators
+
+test.beforeEach("Login to SecureBank", async ({ page }) => {
   const loginPage = new LoginPageExample(page);
-  loginPage.loginNNZakelijk("ci4000012179", "Password01");
+  loginPage.loginStandardUser();
 });
 
 // Rewrite the locators to Page Object Model
-test("Add Employee", async ({ page }) => {
-  const zakelijkPage = new ZakelijkHomePageExample(page);
-  const addEmployeePage = new AddEmployeeDialogExample(page);
-  await test.step("Select product", async () => {
-    await zakelijkPage.selectProduct("WGA Hiaat Aanvullingszekerheid Plus");
-  });
-  await test.step("Enter Basisgegevens", async () => {
-    await zakelijkPage.addEmployeeBt.click();
-    await addEmployeePage.initials.fill("A.B.C.");
-    await addEmployeePage.surename.fill("Test");
-    await addEmployeePage.genderMale.check();
-    await addEmployeePage.dateOfBirth.fill("01-01-1970");
-    await addEmployeePage.employeeNumber.fill("123456789");
-    await addEmployeePage.email.fill("test@test.nl");
-    await addEmployeePage.postalCode.fill("2595AK");
-    await addEmployeePage.houseNumber.fill("35");
-    await page.keyboard.press("Tab");
-    await addEmployeePage.effectiveDate.fill("01-01-2023");
-    await addEmployeePage.nextBt.click();
-  });
-  await test.step("Choose Regelingen", async () => {
-    await addEmployeePage.startDate.fill("01-01-2023");
-    await addEmployeePage.optionalSchemes.check();
-    await addEmployeePage.selectAdmissionReason("Nieuwe werknemer");
-    await addEmployeePage.confiromFitForWorkCheckBox.click();
-    await addEmployeePage.nextBt.click();
-  });
-  await test.step("Bevestigen", async () => {
-    await expect(addEmployeePage.processMutationBt).toBeVisible();
-  });
+test("Transfer money from Checking to High-Yield account", async ({ page }) => {
+  const dashboardPage = new DashboardPageExample(page);
+  const transferPage = new TransferMoneyPage(page);
+
+  await dashboardPage.quickTransferBt.click();
+  await transferPage.transferFromSelect.click();
+  await page.getByRole("option", { name: "Everyday Checking — $" }).click();
+  await transferPage.transferToSelect.click();
+  await page.getByRole("option", { name: "High-Yield Savings — $" }).click();
+  await transferPage.transferAmountInput.fill("1");
+  await transferPage.memoInput.fill("Bla");
+  await transferPage.reviewTransferBt.click();
+  await expect(transferPage.transferConfirmSummary.getByText("$1.00")).toBeVisible();
+  await expect(page.getByText("Bla")).toBeVisible();
+  await transferPage.confirmTransferBt.click();
+  await expect(transferPage.transferSuccessHeading).toBeVisible();
+  await expect(transferPage.transferRefId).toBeVisible();
 });

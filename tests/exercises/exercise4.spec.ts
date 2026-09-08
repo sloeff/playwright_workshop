@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { LoginPageExample } from "../../po/examples/LoginPageExample";
-import { ZakelijkHomePageExample } from "../../po/examples/Zakelijk-HomePageExample";
-import { AddEmployeeDialogExample } from "../../po/examples/AddEmployeeDialogExample";
+import { LoginPageExample } from "../../pages/examples/LoginPageExample";
+
 
 // Verify that the request message contains the correct data
 // Abort the request so the new employee isn't created in SAP

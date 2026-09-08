@@ -1,25 +1,29 @@
 import { test, expect } from "@playwright/test";
 
-// Move the login steps into the beforeEach code
-test.beforeEach("Login to NN zakelijk", async ({ page }) => {
-  await page.goto("Inloggen-zakelijk.htm");
-  await page.locator("#accept-recommended-btn-handler").click();
-  await page.locator("input[name=username]").fill("ci4000012179");
-  await page.locator("input[name=password]").fill("Password01");
-  await page.getByRole("button", { name: "Inloggen" }).click();
-  await expect(page.locator("h1")).toContainText("Nicolette", {
-    timeout: 15000,
-  });
+test.beforeEach("Login to SecureBank", async ({ page }) => {
+  await page.goto("https://qaplayground.com/bank/login");
+  await page.getByTestId("login-username-input").fill("standard_user");
+  await page.getByTestId("login-password-input").fill("bank_sauce");
+  await page.getByTestId("login-submit-btn").click();
 });
 
-test("Verify header details", async ({ page }) => {
-  // Assert the header details here
-  await expect(page.locator('section[data-test="product-overview"]')).toContainText('KvK 14096367')
+test("Transfer money from Checking to High-Yield account", async ({ page }) => {
+  await page.getByTestId("quick-action-transfer").click();
+  await page.getByTestId("transfer-from-select").click();
+  await page.getByRole("option", { name: "Everyday Checking — $" }).click();
+  await page.getByTestId("transfer-to-select").click();
+  await page.getByRole("option", { name: "High-Yield Savings — $" }).click();
+  await page.getByTestId("transfer-amount-input").fill("1");
+  await page.getByRole("textbox", { name: "e.g. Rent, vacation fund…" }).fill("Bla");
+  await page.getByTestId("review-transfer-btn").click();
+  await expect(page.getByTestId("transfer-confirm-summary").getByText("$1.00")).toBeVisible();
+  await expect(page.getByText("Bla")).toBeVisible();
+  await page.getByTestId("confirm-transfer-btn").click();
+  await expect(page.getByTestId("transfer-success-heading")).toBeVisible();
+  await expect(page.getByTestId("transfer-ref-id")).toBeVisible();
 });
 
-test('Verify number of products',async({page})=> {
-  // Created another test in this block with a different assert
-    await expect(page.locator('.c-customer__product-cluster--wrapper')).toHaveCount(3);
-    await page.getByText('WGA Hiaat Aanvullingszekerheid Plus').click();
-})
-
+test("View all account activitity", async ({ page }) => {
+  await page.getByTestId("quick-action-transactions").click();
+  await expect(page.getByRole("cell", { name: "Amazon.com" })).toBeVisible();
+});
