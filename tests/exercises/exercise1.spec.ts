@@ -1,18 +1,22 @@
 import { test } from "@playwright/test";
 
 /* Open Playwright codegen the terminal
-npx playwright codegen https://www.test.portal.nn.insim.biz/Inloggen-zakelijk.htm
+npx playwright codegen https://practicesoftwaretesting.com
 Follow the steps below:
-    1. Accept cookies
-    2. Enter username
-    3. Enter password
-    4. Click inloggen button
-    5. Wait till login was successful
-    6. Assert the header after a successful login
-    7. Assert something else on the page
-    8. Copy/Paste the steps in the code below
-    9. Review the generated code
+    1. Search for "hammer" 
+    2. Open "Thor Hammer" detail page
+    3. Add "Thor Hammer" to the cart
+    4. Navigate to the cart and verify that "Thor Hammer" is in the cart
+    5. Proceed to checkout
+    6. Use a guest a account, use your own e-mail and name to continue as a guest
+    7. Provide a valid Dutch postal code to continue
+    8. Provide dummy bank details and confirm the payment
+    9. Verify that the payment is confirmed, then confirm to continue
+    10. Verify that an invoice number is created
+
+  What happens if you remove the verifcation on step 9?
 */
-test('Login to NN Zakelijk', async({page})=> {
-    // Paste the steps here
+
+test("Order Thor Hammer from practicesoftwaretesting.com", async ({ page }) => {
+  // Paste the steps here
 });
