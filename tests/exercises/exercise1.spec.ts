@@ -1,17 +1,27 @@
 import { test } from "@playwright/test";
 
-/* Open Playwright codegen the terminal
-npx playwright codegen https://qaplayground.com/bank/login
-Follow the steps below:
-    1. Login using the standard_user account (credentials are listed on the login page)
-    2. Open the "Transfer Money" page
-    3. Transfer 1 dollar from "Everyday Checking" to "High-Yield Saving"
-    4. Add a memo of your chosing
-    5. Set "Transfer Date" to "Today" and review the Transfer
-    6. Verify the amount and memo are visible on the review pop-up and confirm
-    7. Verify the succesfull status and a reference number is returned
+/* 
+  Start Playwright codegen via the terminal
+  `npx playwright codegen http://localhost:5175`
+  Follow the steps below:
+    1. Login using the credentials assistant.brown@clinic.local // Clinic1234!
+    2. Schedule a new appointment
+    3. Choose any patient / doctor you want
+    4. Choose a date later in the week during normal business hours
+    5. Provide a note in the appointment
+    6. Verify that the appointment is created, including the note
+    7. Cancel the appointment
+
+  Create a new test, use codegen again.
+    1. Login using the credentials assistant.brown@clinic.local // Clinic1234!
+    2. View all complete appointments
+    3. Verify in the details that you can't edit the appointment.
 */
 
-test("Transfer money from Checking account to High-Yield account", async ({ page }) => {
+test("Create appointment and cancel it", async ({ page }) => {
+  // Paste the steps here
+});
+
+test("Completed appointment cannot be cancelled", async ({ page }) => {
   // Paste the steps here
 });

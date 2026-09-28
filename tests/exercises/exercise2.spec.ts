@@ -1,15 +1,13 @@
 import { test, expect } from "@playwright/test";
 
-test.beforeEach("Login to SecureBank", async ({ page }) => {
+test.beforeEach("Login to Assistent Portal", async ({ page }) => {
   // Move the login steps into the beforeEach code
 });
 
-test("Transfer money from Checking to High-Yield account", async ({ page }) => {
-  // Move the steps to transfer money to this test
-  // Hint: Copy-Paste the steps from exercise one
+test("Create appointment and cancel it", async ({ page }) => {
+  // Paste the steps here from exercise 1
 });
 
-test("View all account activitity", async ({ page }) => {
-  // Created a new test in this block that verifies activities on all accounts
-  // You can choose the tests to your liking
+test("Completed appointment cannot be cancelled", async ({ page }) => {
+  // Paste the steps here from exercise 1
 });

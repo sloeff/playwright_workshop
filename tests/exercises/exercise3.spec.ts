@@ -4,9 +4,9 @@ import { test, expect } from "@playwright/test";
 // Use the function within the beforeEach
 // Use Page Object model for Locators
 
-test.beforeEach("Login to SecureBank", async ({ page }) => {});
+test.beforeEach("Login to Assisent Portal", async ({ page }) => {});
 
 // Rewrite the locators to Page Object Model
-test("Transfer money from Checking to High-Yield account", async ({ page }) => {
-  //Hint: Copy-Paste the steps from Exercise two and rewrite the locators to use Page Object Model
+test("Create appointment and cancel it", async ({ page }) => {
+  // Paste the steps here from exercise two
 });
