@@ -18,4 +18,5 @@ Welcome to the Playwright API Testing repository! This project is designed to pr
 2. Use beforeEach to remove duplicate code
 3. Optimize even further with functions and Page Object Model
 4. Stub calls to make the test run isolated
-5. Use Playwright to test an API
+5. Store credentials in a .env file instead of plain text
+6. Use Playwright to test an API
