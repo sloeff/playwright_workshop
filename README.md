@@ -1,6 +1,7 @@
 # Introduction
 
 Welcome to the Playwright API Testing repository! This project is designed to provide exercises for testing web applications using Playwright.
+This suite uses the cerios-clinic suite. Clone and containerize the cerios-clinic repo from here https://github.com/CeriosTesting/cerios-clinic. All ports mentioned in the exercises are valid endpoints from this container.
 
 # Getting Started
 
